@@ -47,5 +47,7 @@ int main() {
     cout << "Enter a non-negative integer: ";
     cin >> n;
     decimalToBinary(n);
+    cout << endl;
+    cout << "Binary representation using bit manipulation: " << decToBinary(n) << endl;
     return 0;
 }
