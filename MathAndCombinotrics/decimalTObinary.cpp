@@ -24,6 +24,24 @@ void decimalToBinary(int n) {
 
     cout << binary;
 }
+//[Approach - 2] Bit Manipulation - O(log₂(n)) Time and O(1) Space
+/*To convert a decimal number to binary using bit manipulation, repeatedly shift the number right and check the least significant bit.
+*/
+string decToBinary(int n) {
+    
+    string bin = "";
+    while (n > 0) {
+        // checking the mod 
+		int bit = n%2;
+      	bin.push_back('0' + bit);
+        n /= 2;
+    }
+    
+    // reverse the string 
+	reverse(bin.begin(), bin.end());
+    return bin;
+}
+
 int main() {
     int n;
     cout << "Enter a non-negative integer: ";
