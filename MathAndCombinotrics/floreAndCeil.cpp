@@ -41,3 +41,23 @@ int ceil2(int a, int b){
     }
     return q;
 }
+
+
+int main() {
+    int a, b;
+    cout << "Enter two integers (a and b): ";
+    cin >> a >> b;
+
+    try {
+        cout << "Floor of " << a << " / " << b << " is: " << floor(a, b) << endl;
+        cout << "Ceil of " << a << " / " << b << " is: " << ceil(a, b) << endl;
+
+        // Using alternative methods
+        cout << "Floor2 of " << a << " / " << b << " is: " << floor2(a, b) << endl;
+        cout << "Ceil2 of " << a << " / " << b << " is: " << ceil2(a, b) << endl;
+    } catch (const invalid_argument& e) {
+        cerr << e.what() << endl;
+    }
+
+    return 0;
+}
