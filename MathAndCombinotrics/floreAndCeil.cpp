@@ -10,6 +10,17 @@ Given two integers a and b (where b ≠ 0). The objective is to find:
 The floor and ceil functions are commonly used in mathematics and computer science to round numbers down or up, respectively.
 */
 
+/* Integer Division (/): For integral operands, the / operator performs division and truncates towards zero. This means it discards any fractional part, effectively rounding towards zero.
+
+7 / 3 = 2
+
+-7 / 3 = -2
+
+7 / -3 = -2
+
+-7 / -3 = 2
+*/
+
 int floor(int a, int b){
     if (b == 0) {
         throw invalid_argument("Division by zero is not allowed.");
