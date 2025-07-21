@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <algorithm>
 using namespace std;
 
 
@@ -40,6 +41,21 @@ string decToBinary(int n) {
     // reverse the string 
 	reverse(bin.begin(), bin.end());
     return bin;
+}
+
+/*Using Head Recursion - O(log₂(n)) Time and O(log₂(n)) Space */
+
+void decimalToBinaryRec(int n) {
+    if (n == 0) {
+        return;
+    }
+
+    // Recur for smaller bits.
+    decimalToBinaryRec(n / 2);
+    cout << (n % 2);
+
+    // Add MSB of current number to the binary string
+  	bin.push_back(n%2 + '0');
 }
 
 int main() {
