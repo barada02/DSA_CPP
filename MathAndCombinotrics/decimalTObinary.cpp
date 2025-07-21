@@ -45,25 +45,31 @@ string decToBinary(int n) {
 
 /*Using Head Recursion - O(log₂(n)) Time and O(log₂(n)) Space */
 
-void decimalToBinaryRec(int n) {
+void decimalToBinaryRec(int n, string &bin) {
     if (n == 0) {
         return;
     }
 
     // Recur for smaller bits.
-    decimalToBinaryRec(n / 2);
-    cout << (n % 2);
+    decimalToBinaryRec(n / 2, bin);
 
     // Add MSB of current number to the binary string
-  	bin.push_back(n%2 + '0');
+    bin.push_back(n % 2 + '0');
 }
 
 int main() {
     int n;
     cout << "Enter a non-negative integer: ";
     cin >> n;
+
+    // Using iterative approach
     decimalToBinary(n);
     cout << endl;
-    cout << "Binary representation using bit manipulation: " << decToBinary(n) << endl;
+
+    // Using recursive approach
+    string bin = "";
+    decimalToBinaryRec(n, bin);
+    cout << "Binary representation using recursion: " << bin << endl;
+
     return 0;
 }
