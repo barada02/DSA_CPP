@@ -32,3 +32,12 @@ int ceil(int a, int b){
     }
     return a / b + (a % b > 0 ? 1 : 0);
 }
+
+int ceil2(int a, int b){
+    int q = a/b;
+
+    if ((a^b)<0 && a%b !=0){
+        q++;
+    }
+    return q;
+}
