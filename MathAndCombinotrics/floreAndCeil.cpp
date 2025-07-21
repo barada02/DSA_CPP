@@ -77,9 +77,8 @@ int ceil2(int a, int b){
 
 
 int main() {
-    int a, b;
-    cout << "Enter two integers (a and b): ";
-    cin >> a >> b;
+    int a = 7, b = -3;;
+    
 
     try {
         cout << "Floor of " << a << " / " << b << " is: " << floor(a, b) << endl;
@@ -94,3 +93,9 @@ int main() {
 
     return 0;
 }
+
+// Output:
+// Floor of 7 / -3 is: -2
+// Ceil of 7 / -3 is: -1
+// Floor2 of 7 / -3 is: -3
+// Ceil2 of 7 / -3 is: -2
