@@ -5,8 +5,8 @@ using namespace std;
 /*
 
 Given two integers a and b (where b ≠ 0). The objective is to find:
-• The floor of the division a / b, denoted as ⌊a / b⌋ — the greatest integer less than or equal to a / b.
-• The ceil of the division a / b, denoted as ⌈a / b⌉ — the smallest integer greater than or equal to a / b.
+• The floor of the division a / b, denoted as ⌊a / b⌋ — the greatest integer less than or equal to a / b. which always rounds towards negative infinity.(-∞)
+• The ceil of the division a / b, denoted as ⌈a / b⌉ — the smallest integer greater than or equal to a / b. which always rounds towards positive infinity.(+∞)
 The floor and ceil functions are commonly used in mathematics and computer science to round numbers down or up, respectively.
 */
 
