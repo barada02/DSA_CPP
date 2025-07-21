@@ -40,6 +40,15 @@ If a % b is negative, it subtracts 1 from a / b.
 If a % b is non-negative, it subtracts 0 (does nothing).
 */ 
 
+/*
+he core concept flaw is that it only considers the sign of the remainder (a % b) to decide if a correction is needed. Because a % b always takes the sign of a, this logic:
+
+Fails to apply a needed correction when a is positive and b is negative (e.g., 7 / -3), because a % b will be positive, and 1 is not subtracted.
+
+Applies an unneeded correction when a is negative and b is negative (e.g., -7 / -3), because a % b will be negative, and 1 is incorrectly subtracted.
+
+The correct approach (as seen in floor2) needs to consider the signs of both a and b to determine when C++'s a/b deviates from mathematical floor division.
+*/
 
 int floor2(int a, int b){
     int q = a/b;
