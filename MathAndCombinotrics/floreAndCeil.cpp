@@ -27,11 +27,24 @@ int floor(int a, int b){
     }
     return a / b - (a % b < 0 ? 1 : 0); 
 }
+/*
+
+The function floor tries to implement a correction:
+
+a / b: This gives the integer division result.
+
+(a % b < 0 ? 1 : 0): This is the correction term. It checks if the remainder (a % b) is negative.
+
+If a % b is negative, it subtracts 1 from a / b.
+
+If a % b is non-negative, it subtracts 0 (does nothing).
+*/ 
+
 
 int floor2(int a, int b){
     int q = a/b;
 
-    if ((a^b)<0 && a%b !=0){
+    if ((a^b)<0 && a%b !=0){     //a^b < 0: This expression uses the bitwise XOR operator. a^b will be negative if and only if a and b have different signs. This is a clever way to check if one is positive and the other is negative.
         q--;
     }
     return q;
