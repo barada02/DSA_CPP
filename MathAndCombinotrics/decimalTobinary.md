@@ -102,3 +102,106 @@ Then, append N % 2 (the remainder).
 
 After the initial call completes, the bin string will contain "1101".
 
+### Approach4 (Using Bitwise Operators):
+
+
+
+```cpp
+string dectobinary4(int n){
+    // 1. Base Case: Handle the input of 0
+    // If the input number is 0, its binary representation is "0".
+    // This handles the edge case explicitly and prevents the loop from running for 0.
+    if(n == 0){
+        return "0";
+    }
+
+    // 2. Initialize an empty string to build the binary number
+    string bin = "";
+
+    // 3. Main Loop: Continues as long as 'n' is greater than 0
+    // The loop extracts bits from 'n' one by one, starting from the LSB.
+    while (n > 0){
+        // 4. Finding (n % 2) using bitwise AND operator
+        // int bit = n & 1;
+        // This is a clever and often more efficient way to get the least significant bit (LSB).
+        // - Any number ANDed with 1 (`... & 1`) will result in:
+        //   - 1 if the number is odd (its LSB is 1)
+        //   - 0 if the number is even (its LSB is 0)
+        // This is equivalent to `n % 2`.
+        int bit = n & 1; // Get the least significant bit (LSB)
+
+        // 5. Append the character representation of the bit to the 'bin' string.
+        // '0' + bit converts integer 0 to character '0' and integer 1 to character '1'.
+        // push_back() adds the character to the end of the string.
+        // Similar to the previous iterative example, this builds the string in reverse order (LSB first).
+        bin.push_back('0' + bit); // Append the bit to the string
+
+        // 6. Right shift the number to process the next bit
+        // n >>= 1;
+        // This is the bitwise right shift operator. It effectively divides 'n' by 2
+        // and discards any fractional part (which is exactly what integer division `n /= 2` does).
+        // For example, if n = 13 (binary 1101), n >>= 1 makes n = 6 (binary 0110).
+        // It shifts all bits one position to the right, effectively dropping the LSB and
+        // moving the next bit into the LSB position for the next iteration.
+        n >>= 1;
+    }
+
+    // 7. Reverse the string to get the correct order
+    // Because push_back() appends bits from LSB to MSB, the string is built in reverse.
+    // This step corrects the order to MSB to LSB.
+    reverse(bin.begin(), bin.end()); // Reverse the string to get the correct order
+
+    // 8. Return the final binary string
+    return bin;
+}
+```
+
+-----
+
+### How it Works (Bitwise Approach)
+
+This function employs the same underlying algorithm of **repeated division by 2** but implements the division and remainder calculation using **bitwise operators**, which can sometimes be more efficient at a low level (though modern compilers often optimize `n % 2` and `n /= 2` to use bitwise operations anyway).
+
+### Key Bitwise Operators Used:
+
+  * **`&` (Bitwise AND):**
+
+      * `n & 1`: Performs a bitwise AND operation between `n` and `1`.
+      * Since `1` in binary is `...0001`, this operation effectively isolates the rightmost bit (Least Significant Bit or LSB) of `n`. All other bits, when ANDed with `0` (from `1`), become `0`.
+      * If `n`'s LSB is `1`, `n & 1` will be `1`.
+      * If `n`'s LSB is `0`, `n & 1` will be `0`.
+      * This is a highly optimized way to check if a number is odd or even, and to get its LSB.
+
+  * **`>>=` (Right Shift Assignment):**
+
+      * `n >>= 1`: This is equivalent to `n = n >> 1`.
+      * The `>>` operator performs a **right bit shift**. It moves all bits in `n` one position to the right.
+      * When you right-shift by `1`, the LSB is discarded, and the second LSB becomes the new LSB, and so on.
+      * This effectively performs integer division by 2. For example, `13 (1101_2) >> 1` results in `6 (0110_2)`.
+
+### Example Walkthrough (for `n = 13`)
+
+| Iteration | `n` (start) | Binary of `n` | `bit` (`n & 1`) | `bin` (before `push_back`) | `bin` (after `push_back`) | `n` (`n >>= 1`) | Binary of `new n` |
+| :-------- | :---------- | :------------ | :-------------- | :------------------------- | :------------------------ | :-------------- | :---------------- |
+| Initial   | 13          | `...1101`     |                 | ""                         | ""                        |                 |                   |
+| 1         | 13          | `...1101`     | 1               | ""                         | "1"                       | 6               | `...0110`         |
+| 2         | 6           | `...0110`     | 0               | "1"                        | "10"                      | 3               | `...0011`         |
+| 3         | 3           | `...0011`     | 1               | "10"                       | "101"                     | 1               | `...0001`         |
+| 4         | 1           | `...0001`     | 1               | "101"                      | "1011"                    | 0               | `...0000`         |
+
+Loop terminates because `n` is now `0`.
+
+The `bin` string is currently `"1011"`.
+
+`reverse(bin.begin(), bin.end());` will reverse `"1011"` to `"1101"`.
+
+Finally, `return bin;` returns `"1101"`.
+
+-----
+
+### Advantages of Bitwise Operations:
+
+  * **Performance:** Bitwise operations (`&`, `>>`) are often faster than arithmetic operations (`%`, `/`) at the machine code level, as they directly manipulate bits. Modern compilers are very good at optimizing, so the practical difference might be small for simple integer conversions, but it's a fundamental optimization technique.
+  * **Conciseness:** They provide a compact way to express common bit manipulations.
+
+This `dectobinary4` function is a well-implemented and efficient way to convert decimal to binary, particularly highlighting the use of bitwise operators.
