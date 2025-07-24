@@ -18,10 +18,11 @@ void decimalToBinary(int n) {
     }
     
     string binary = "";
+    while(n>0){
         binary = char('0' + (n % 2)) + binary; // Prepend the remainder
-        binary = to_string(n % 2) + binary; // Prepend the remainder
+        
         n /= 2; // Divide by 2
-    
+    }
 
     cout << binary;
 }
