@@ -44,7 +44,8 @@ string decToBinary(int n) {
     return bin;
 }
 
-/*Using Head Recursion - O(log₂(n)) Time and O(log₂(n)) Space */
+/* Approach - 3
+Using Head Recursion - O(log₂(n)) Time and O(log₂(n)) Space */
 
 void decimalToBinaryRec(int n, string &bin) {
     if (n == 0) {
@@ -57,6 +58,36 @@ void decimalToBinaryRec(int n, string &bin) {
     // Add MSB of current number to the binary string
     bin.push_back(n % 2 + '0');
 }
+
+
+/* Approach - 4
+ Using Bitwise Operators - O(log₂(n)) Time and O(log₂(n)) Space
+Using bitwise operators, we can extract binary digits by checking the least significant bit (n & 1) and then right-shifting the number (n >> 1) to process the next bit.
+This method is faster than arithmetic division and modulo, as bitwise operations are more efficient at the hardware level.
+*/
+
+string dectobinary4(int n){
+    if(n == 0){
+        return "0";
+    }
+
+    string bin = "";
+    
+    while (n>0){
+
+        // Finding (n % 2) using bitwise AND operator
+
+        int bit = n & 1; // Get the least significant bit (LSB)
+
+        bin.push_back('0'+ bit); // Append the bit to the string
+
+        n >>= 1; // Right shift the number to process the next bit
+    }
+    reverse(bin.begin(), bin.end()); // Reverse the string to get the correct order
+    return bin;
+}
+
+
 
 int main() {
     int n;
