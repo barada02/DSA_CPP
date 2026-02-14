@@ -170,3 +170,110 @@ int sumArray(int arr[], int n) {
 
 ---
 
+### Example 4: Nested Loops
+
+```cpp
+void printAllPairs(int arr[], int n) {
+    for(int i = 0; i < n; i++) {           // Outer loop: n times
+        for(int j = 0; j < n; j++) {       // Inner loop: n times
+            cout << arr[i] << ", " << arr[j] << endl;  // Constant work
+        }
+    }
+}
+```
+
+**Operation Count:**
+- Outer loop runs: n times
+- For each outer iteration, inner loop runs: n times
+- Total iterations: n × n = n²
+- Operations per iteration: ~5 (2 array accesses, 2 outputs, 1 newline)
+
+**Total:** 5n²
+
+**Time Complexity:** f(n) = 5n² ≈ **n²** (quadratic)
+
+---
+
+### Example 5: Three Sequential Loops
+
+```cpp
+void threeLoops(int arr[], int n) {
+    // First loop
+    for(int i = 0; i < n; i++) {
+        cout << arr[i];             // n operations
+    }
+    
+    // Second loop
+    for(int i = 0; i < n; i++) {
+        cout << arr[i] * 2;         // n operations
+    }
+    
+    // Third loop
+    for(int i = 0; i < n; i++) {
+        cout << arr[i] + 1;         // n operations
+    }
+}
+```
+
+**Operation Count:**
+- First loop: n operations
+- Second loop: n operations  
+- Third loop: n operations
+
+**Total:** n + n + n = **3n**
+
+**Time Complexity:** f(n) = 3n ≈ **n** (still linear!)
+
+**Key Insight:** Sequential loops ADD, they don't multiply!
+
+---
+
+## 🎨 The Art of Simplification
+
+### Rule 1: Drop Constants
+
+Constants become insignificant for large n.
+
+```cpp
+// f(n) = 5n + 3
+n = 10:     5(10) + 3 = 53
+n = 1000:   5(1000) + 3 = 5,003      (constant is 0.06%)
+n = 1M:     5(1M) + 3 = 5,000,003    (constant is 0.00006%)
+```
+
+**Simplification:** 5n + 3 → 5n → **n**
+
+### Rule 2: Drop Lower-Order Terms
+
+Higher-order terms dominate as n grows.
+
+```cpp
+// f(n) = n² + 100n + 50
+n = 10:     100 + 1000 + 50 = 1,150      (n² is 8.7%)
+n = 100:    10,000 + 10,000 + 50 = 20,050    (n² is 50%)
+n = 1000:   1,000,000 + 100,000 + 50 = 1,100,050  (n² is 91%)
+n = 10000:  100M + 1M + 50 ≈ 101M     (n² is 99%)
+```
+
+**Simplification:** n² + 100n + 50 → n² + 100n → **n²**
+
+### Rule 3: Keep Different Input Variables
+
+```cpp
+void processTwoArrays(int arr1[], int n, int arr2[], int m) {
+    for(int i = 0; i < n; i++) {
+        cout << arr1[i];    // n operations
+    }
+    
+    for(int i = 0; i < m; i++) {
+        cout << arr2[i];    // m operations
+    }
+}
+```
+
+**Time Complexity:** f(n, m) = **n + m**
+
+**Cannot simplify further** because n and m are independent!
+
+---
+
