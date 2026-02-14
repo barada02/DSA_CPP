@@ -125,3 +125,20 @@ int findMax(int arr[], int n) {
     return max;                    // 1 operation
 }
 ```
+
+**Detailed Count:**
+
+| Statement | Count | Explanation |
+|-----------|-------|-------------|
+| `int max = arr[0]` | 1 | One-time initialization |
+| `int i = 1` | 1 | Loop initialization |
+| `i < n` | n | Comparison happens n times |
+| `i++` | n-1 | Increment happens n-1 times |
+| `arr[i] > max` | n-1 | Comparison in each iteration |
+| `max = arr[i]` | 0 to n-1 | Worst case: n-1 times |
+| `return max` | 1 | Final return |
+
+**Total (worst case):** 1 + 1 + n + (n-1) + (n-1) + (n-1) + 1 = **4n - 1**
+
+**Time Complexity:** f(n) = 4n - 1 ≈ **n** (linear)
+
