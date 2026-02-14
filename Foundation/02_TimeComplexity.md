@@ -277,3 +277,83 @@ void processTwoArrays(int arr1[], int n, int arr2[], int m) {
 
 ---
 
+## 📊 Common Time Complexity Patterns
+
+### Pattern 1: Constant Time - O(1)
+```cpp
+void constantTime(int arr[], int n) {
+    cout << arr[0];           // Operation 1
+    cout << arr[n/2];         // Operation 2
+    cout << arr[n-1];         // Operation 3
+    int sum = arr[0] + arr[5]; // Operation 4
+}
+```
+**Fixed number of operations, regardless of n**  
+**Time Complexity:** f(n) = 1
+
+---
+
+### Pattern 2: Linear Time - O(n)
+```cpp
+void linearTime(int arr[], int n) {
+    for(int i = 0; i < n; i++) {
+        cout << arr[i];
+    }
+}
+```
+**Operations scale linearly with input**  
+**Time Complexity:** f(n) = n
+
+---
+
+### Pattern 3: Quadratic Time - O(n²)
+```cpp
+void quadraticTime(int arr[], int n) {
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+            cout << arr[i] + arr[j];
+        }
+    }
+}
+```
+**Nested loops, operations = n × n**  
+**Time Complexity:** f(n) = n²
+
+---
+
+### Pattern 4: Logarithmic Time - O(log n)
+```cpp
+int binarySearch(int arr[], int n, int target) {
+    int left = 0, right = n - 1;
+    
+    while(left <= right) {
+        int mid = left + (right - left) / 2;
+        
+        if(arr[mid] == target) return mid;
+        if(arr[mid] < target) left = mid + 1;
+        else right = mid - 1;
+    }
+    return -1;
+}
+```
+**Input space halved each iteration**  
+**Time Complexity:** f(n) = log n
+
+---
+
+### Pattern 5: Linearithmic Time - O(n log n)
+```cpp
+void mergeSort(int arr[], int left, int right) {
+    if(left < right) {
+        int mid = left + (right - left) / 2;
+        
+        mergeSort(arr, left, mid);       // Divide
+        mergeSort(arr, mid + 1, right);  // Divide
+        merge(arr, left, mid, right);    // Conquer (O(n))
+    }
+}
+```
+**Divide and conquer with linear merging**  
+**Time Complexity:** f(n) = n log n
+
+---
