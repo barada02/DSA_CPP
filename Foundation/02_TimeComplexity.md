@@ -404,3 +404,122 @@ int linearSearch(int arr[], int n, int target) {
 ✅ **Average case requires knowing input distribution** - often unknown  
 
 ---
+
+## 🧮 Practice Problems
+
+### Problem 1
+```cpp
+void mystery1(int n) {
+    for(int i = 0; i < n; i++) {
+        cout << i;
+    }
+}
+```
+**Answer:** f(n) = n (Linear)
+
+---
+
+### Problem 2
+```cpp
+void mystery2(int n) {
+    for(int i = 0; i < n; i += 2) {
+        cout << i;
+    }
+}
+```
+**Answer:** Loop runs n/2 times → f(n) = n/2 → **n** (still linear!)
+
+---
+
+### Problem 3
+```cpp
+void mystery3(int n) {
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+            cout << i + j;
+        }
+    }
+}
+```
+**Answer:** f(n) = n² (Quadratic)
+
+---
+
+### Problem 4
+```cpp
+void mystery4(int n) {
+    for(int i = 0; i < n; i++) {
+        cout << i;
+    }
+    
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+            cout << i + j;
+        }
+    }
+}
+```
+**Answer:** f(n) = n + n² → **n²** (drop lower-order term)
+
+---
+
+### Problem 5
+```cpp
+void mystery5(int n) {
+    int a = 0;
+    for(int i = 0; i < n; i++) {
+        for(int j = n; j > i; j--) {
+            a = a + i + j;
+        }
+    }
+}
+```
+**Answer:** 
+- Outer loop: n times
+- Inner loop: varies from n to 1
+- Total: n + (n-1) + (n-2) + ... + 1 = n(n+1)/2 = n²/2
+- f(n) = n²/2 → **n²** (Quadratic)
+
+---
+
+### Problem 6
+```cpp
+void mystery6(int arr1[], int n, int arr2[], int m) {
+    for(int i = 0; i < n; i++) {
+        cout << arr1[i];
+    }
+    
+    for(int i = 0; i < m; i++) {
+        cout << arr2[i];
+    }
+}
+```
+**Answer:** f(n, m) = **n + m** (cannot simplify - different variables!)
+
+---
+
+## 🔑 Key Takeaways
+
+### Core Concepts
+✅ **Time complexity** = growth rate, not exact time  
+✅ **Count operations** relative to input size n  
+✅ **Simplify** expressions by dropping constants and lower terms  
+✅ **Dominant term** determines overall complexity  
+✅ **Worst case** is typically what we analyze  
+✅ **Pattern recognition** is key: loops → n, nested loops → n²  
+
+### Simplification Rules
+1. Drop constant factors: 5n → n
+2. Drop lower-order terms: n² + n → n²
+3. Keep different variables: n + m stays as n + m
+4. Constants become 1: 7 → 1
+
+### Common Patterns
+- No loops → Constant (1)
+- One loop → Linear (n)
+- Nested loops → Quadratic (n²) or higher
+- Dividing input → Logarithmic (log n)
+- Loop + Divide → Linearithmic (n log n)
+
+---
+
