@@ -523,3 +523,41 @@ void mystery6(int arr1[], int n, int arr2[], int m) {
 
 ---
 
+## 🤔 Questions to Ponder
+
+Before moving to Session 3:
+
+1. **Half-Loop Question**
+   - If a loop runs n/2 times, is it still O(n)?
+   - What if it runs n/3 or n/100 times?
+
+2. **Three Nested Loops**
+   - What's the time complexity?
+   - What about 4 nested loops?
+
+3. **Mixed Terms**
+   - If we have f(n) = n + log n, which term dominates?
+   - What about n² + n log n?
+
+4. **Real-World Trade-off**
+   - Algorithm A: Always 1000 operations
+   - Algorithm B: n operations
+   - Which is better? Does it depend on n?
+
+---
+
+## 🚀 Next Session Preview
+
+In **Session 3: Big O Notation**, we'll:
+- Formally introduce Big O notation O(·)
+- Learn Big Omega (Ω) and Big Theta (Θ)
+- Understand the mathematical definition
+- Master the rules for calculating Big O
+- See why we prefer Big O over exact functions
+
+**Ready to learn the formal notation system? Let's continue!**
+
+---
+
+*Created: February 14, 2026*  
+*Part of DSA Fundamentals Learning Series*
