@@ -78,3 +78,50 @@ return arr[0];      // 1 operation
 int result = max(a, b);  // 1 operation (if we're not analyzing the function)
 ```
 
+### What We DON'T Count
+- Variable declarations (without initialization)
+- Comments
+- Whitespace
+- Curly braces
+
+---
+
+## 💻 Detailed Examples with Step-by-Step Analysis
+
+### Example 1: Constant Operations
+
+```cpp
+int getFirst(int arr[], int n) {
+    return arr[0];
+}
+```
+
+**Operation Count:**
+1. Array access `arr[0]`: 1 operation
+2. Return: 1 operation
+
+**Total: 2 operations**
+
+**Important:** This is **constant** - doesn't depend on n!
+- n = 10 → 2 operations
+- n = 1,000,000 → 2 operations
+
+**Time Complexity:** f(n) = 1 (we express constants as 1)
+
+---
+
+### Example 2: Simple Linear Loop
+
+```cpp
+int findMax(int arr[], int n) {
+    int max = arr[0];              // 1 operation
+    
+    for(int i = 1; i < n; i++) {  // Loop analysis below
+        if(arr[i] > max) {         // 1 comparison per iteration
+            max = arr[i];          // 1 assignment (sometimes)
+        }
+    }
+    
+    return max;                    // 1 operation
+}
+```
