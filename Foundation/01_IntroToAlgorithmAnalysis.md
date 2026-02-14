@@ -212,6 +212,37 @@ The algorithm choice becomes **critical**!
 3. **Growth rate** dominates for large n
 4. Helps us predict **scalability**
 
+### Core Idea
+
+Instead of counting every single operation, we focus on:
+- **How fast** does the workload grow when input size increases?
+- What happens with **really large** inputs?
+- The **growth rate** rather than exact operation counts
+
+### Why the Term "Asymptotic"?
+
+The term comes from mathematics - an **asymptote** is a line that a curve approaches but never quite reaches. 
+
+In algorithm analysis, we're looking at what happens as n approaches infinity (n → ∞). We study the behavior of the algorithm **in the limit** - how it performs when the input becomes arbitrarily large.
+
+### What We Ignore in Asymptotic Analysis
+
+When analyzing algorithms asymptotically, we **drop**:
+- ❌ **Constant multipliers** (5n becomes just n)
+- ❌ **Lower-order terms** (n² + n becomes just n²)
+- ❌ **Hardware/implementation details** (CPU speed, memory, etc.)
+- ❌ **Small input behavior** (performance on n = 10)
+
+### What We Keep in Asymptotic Analysis
+
+We **focus on**:
+- ✅ **The dominant term** (n², n log n, n, etc.)
+- ✅ **How the algorithm scales** with input size
+- ✅ **The fundamental algorithmic behavior**
+- ✅ **Growth pattern** for large inputs
+
+This is why we say an algorithm is **"O(n)"** instead of "exactly 5n + 3 operations" - the growth pattern matters more than the precise count for predicting real-world performance.
+
 ### Example: 5n vs n²
 
 ```cpp
