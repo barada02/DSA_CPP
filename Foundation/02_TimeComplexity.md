@@ -357,3 +357,50 @@ void mergeSort(int arr[], int left, int right) {
 **Time Complexity:** f(n) = n log n
 
 ---
+
+## 🎯 Best, Average, and Worst Case Analysis
+
+Algorithms can perform differently based on input characteristics.
+
+### Example: Linear Search
+
+```cpp
+int linearSearch(int arr[], int n, int target) {
+    for(int i = 0; i < n; i++) {
+        if(arr[i] == target) {
+            return i;  // Found - early exit!
+        }
+    }
+    return -1;  // Not found
+}
+```
+
+### Three Cases:
+
+#### 1. **Best Case** - Ω(1)
+- **Scenario:** Target is at index 0
+- **Operations:** 1 comparison
+- **Time:** f(n) = 1
+
+#### 2. **Average Case** - Θ(n)
+- **Scenario:** Target is equally likely at any position
+- **Expected position:** n/2
+- **Operations:** n/2 comparisons on average
+- **Time:** f(n) = n/2 ≈ n
+
+#### 3. **Worst Case** - O(n)
+- **Scenario:** Target is at last position or not present
+- **Operations:** n comparisons
+- **Time:** f(n) = n
+
+### Which Case Do We Care About?
+
+**In practice, we focus on WORST CASE** because:
+
+✅ **Guarantees performance** - sets an upper bound  
+✅ **Easier to analyze** - no assumptions about input  
+✅ **Most practical** - want to know what can go wrong  
+✅ **Best case often irrelevant** - too optimistic  
+✅ **Average case requires knowing input distribution** - often unknown  
+
+---
