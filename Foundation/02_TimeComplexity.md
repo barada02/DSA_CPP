@@ -142,3 +142,31 @@ int findMax(int arr[], int n) {
 
 **Time Complexity:** f(n) = 4n - 1 ≈ **n** (linear)
 
+---
+
+### Example 3: Sum of Array
+
+```cpp
+int sumArray(int arr[], int n) {
+    int sum = 0;                    // 1 operation
+    
+    for(int i = 0; i < n; i++) {   // Loop: n iterations
+        sum += arr[i];              // 2 operations: access + add
+    }
+    
+    return sum;                     // 1 operation
+}
+```
+
+**Operation Count:**
+- Initialization: 1
+- Loop runs n times
+- Inside loop: 2 operations per iteration → 2n
+- Return: 1
+
+**Total:** 1 + 2n + 1 = **2n + 2**
+
+**Time Complexity:** f(n) = 2n + 2 ≈ **n**
+
+---
+
