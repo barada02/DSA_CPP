@@ -19,3 +19,18 @@
 - ✅ Machine-independent and language-independent
 
 ---
+
+## 📐 Formal Definition
+
+> **Time Complexity = f(n)**
+> 
+> Where:
+> - **f(n)** is a mathematical function
+> - **n** is the size of the input
+> - The function describes the number of basic operations
+
+**Example:**
+- If an algorithm performs 5n + 3 operations, then f(n) = 5n + 3
+- As n grows large, this behaves like f(n) = n
+
+---
