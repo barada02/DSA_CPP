@@ -34,3 +34,47 @@
 - As n grows large, this behaves like f(n) = n
 
 ---
+
+## 🔍 What Counts as an Operation?
+
+### Basic Operations (Each = 1 operation)
+
+#### 1. **Arithmetic Operations**
+```cpp
+int a = 5 + 3;      // 1 operation (addition)
+int b = x * y;      // 1 operation (multiplication)
+int c = a / b;      // 1 operation (division)
+int d = x % 2;      // 1 operation (modulo)
+```
+
+#### 2. **Comparison Operations**
+```cpp
+if(a < b)           // 1 operation (comparison)
+if(x == y)          // 1 operation (equality check)
+if(n >= 0)          // 1 operation (comparison)
+```
+
+#### 3. **Assignment Operations**
+```cpp
+int x = 5;          // 1 operation (assignment)
+total += value;     // 2 operations (addition + assignment)
+count++;            // 2 operations (increment + assignment)
+```
+
+#### 4. **Array/Memory Access**
+```cpp
+int val = arr[i];   // 1 operation (array access)
+arr[i] = 10;        // 1 operation (array write)
+```
+
+#### 5. **Return Statements**
+```cpp
+return x;           // 1 operation
+return arr[0];      // 1 operation
+```
+
+#### 6. **Function Calls**
+```cpp
+int result = max(a, b);  // 1 operation (if we're not analyzing the function)
+```
+
